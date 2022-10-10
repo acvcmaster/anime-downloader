@@ -25,14 +25,8 @@ impl MetadataExtractor {
             let name = captures.name("name").map(|value| value.as_str());
             let episode = captures.name("episode").map(|value| value.as_str());
 
-            return match (name, episode) {
-                (Some(name), Some(episode)) => {
-                    if let Ok(episode) = episode.to_owned().parse() {
-                        return Some(Metadata::new(name.to_owned(), episode));
-                    }
-
-                    None
-                }
+            return match (name, episode.map(|episode| episode.to_owned().parse())) {
+                (Some(name), Some(Ok(episode))) => Some(Metadata::new(name.to_owned(), episode)),
                 _ => None,
             };
         }
