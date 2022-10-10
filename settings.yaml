@@ -1,0 +1,13 @@
+polling_interval: 120 # seconds
+aria_url: http://local.aria.com:6800/jsonrpc
+mongo_db_url: mongodb+srv://redirectroot:<password>@cluster0.zv0pt.mongodb.net/?retryWrites=true&w=majority
+client_id: 1865c6b3-0075-4e04-8428-b773617834c0
+feeds:
+  - type: EraiRaws
+    pattern: \[Magnet\] (?P<name>.*) - (?P<episode>\d{1,3}).*
+    url: https://www.erai-raws.info/feed/?res=1080p&type=magnet&0879fd62733b8db8535eb1be24e23f6d
+animes:
+  - name: Uzaki-chan wa Asobitai! Double
+    source:
+      id: Uzaki-chan wa Asobitai! Double
+      rss: EraiRaws
